@@ -41,18 +41,21 @@ f1.close()
 print()
 
 #Que5-->Read a file and sort it to another file.
-a="6,2,8,5,10,1,9,4,7,3"
-f=open("que5.txt",'r+')
-f1=open("que5_1.txt",'a')
-for i in a:
-    f.write(i)
+import random
+f=open("que5.txt",'w+')
+for i in range(10):
+    f.write(str(random.randint(0,9)))
+    f.write('\n')
 f.close()
 f=open("que5.txt",'r')
-data=f.read()
-b=data.split(',')
-b.sort()
-for i in b:
+f1=open("que5_1.txt",'w+')
+l=[]
+for line in f:
+    l.append(int(line.strip("\n")))
+l=sorted(l)
+for i in l:
     print(i)
     f1.write('%s\n' %i)
 f1.close()
 f.close()
+
